@@ -8,6 +8,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -36,7 +37,8 @@ INSTALLED_APPS = [
     'django_filters',
     'properties.apps.PropertiesConfig',
     'users.apps.UsersConfig',
-    'findMyProperty.apps.FindMyPropertyConfig'
+    'findMyProperty.apps.FindMyPropertyConfig',
+    'django.contrib.postgres',
 ]
 
 
@@ -74,13 +76,22 @@ WSGI_APPLICATION = 'FindMyPropertyWebsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'efs',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'PORT': '5433'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -138,3 +149,5 @@ EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL='/'
+
+django_heroku.settings(locals())
