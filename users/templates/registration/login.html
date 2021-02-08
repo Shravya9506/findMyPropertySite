@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In{% endblock title %}
+{%load static %}
+{% block content %}
+<div class="full-screen-height">
+<h3 class="text-center mb-5">Login form</h3>
+
+    <form method="post" class="login-form-container">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="mb-2">
+        <button class="btn-sm btn-primary" type="submit">Log In</button>
+            </div>
+        <p id="password-reset-link"><a href="{% url 'users:password_reset_form' %}">Forgotten your  password?</a></p>
+    </form>
+</div>
+{% endblock content %}

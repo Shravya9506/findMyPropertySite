@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div>
+  {% for property in properties%}
+    <div class="card">
+      <div class="card-header">{{property.name}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{property.address}}, {{property.city}}, {{property.state}}, {{property.zipcode}}</h5>
+        <p class="card-text">{{property.description}}</p>
+        <p class="card-text">{{property.seller.user.first_name}} {{property.seller.user.last_name}}</p>
+        <a href="{% url 'properties:message_owner' propertyId=property.id %}" class="btn btn-primary">Contact owner</a>
+        <a class="btn btn-primary">Email me more</a>
+      </div>
+    </div>
+  {% endfor%}
+</div>
+{% endblock content %}
+</html>

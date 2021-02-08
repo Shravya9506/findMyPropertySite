@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+<h3 class="text-center mb-5">Sign Up</h3>
+<form method="post" class="custom-form pr-5 pl-5 ml-5 mr-5">
+    {% csrf_token %}
+ {{ form.as_p }}
+  <p>
+  <label for="register_as">Register as:</label>
+  <select name="register_as" id="register_as">
+    <option value="BU" selected>Buyer</option>
+    <option value="SE" >Seller</option>
+  </select>
+    </p>
+  <div>
+  <button class="btn btn-primary" type="submit">Sign Up</button>
+    </div>
+</form>
+    </div>
+</div>
+{% endblock content %}

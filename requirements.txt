@@ -1,0 +1,8 @@
+django==2.2.4
+django-crispy-forms
+pillow
+django-filter
+weasyprint
+django-heroku
+psycopg2==2.8.4
+gunicorn
