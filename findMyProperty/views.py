@@ -9,7 +9,7 @@ def home(request):
     if request.user.id == None:
         return render(request, 'home.html', {'properties' : properties})
     elif Seller.objects.filter(user_id=request.user.id).values_list('user_id', flat=True).distinct().count() > 0:
-        return render(request, 'home.html', {'properties': properties})
+        return redirect('properties:view_your_properties', request.user.id)
     else:
         buyer = get_object_or_404(Buyer, user_id=request.user.id)
         favs = CustomerFavoriteProperty.objects.filter(buyer=buyer).values_list('property_id', flat=True).distinct()

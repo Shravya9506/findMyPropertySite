@@ -47,16 +47,16 @@ def edit_property(request, pk):
             return redirect('properties:view_your_properties')
         else:
             form = PropertyForm(instance=property)
-            return render(request, 'edit_properties.html', {'form': form})
+            return render(request, 'edit_property.html', {'form': form})
 
 @login_required
 def delete_property(request, pk):
     property = get_object_or_404(Property, pk=pk)
     if request.method == "POST":
         property.delete()
-        return redirect('properties:view_your_properties')
+        return redirect('properties:view_your_properties', pk)
     else:
-        return render(request, 'delete_properties.html', {'property': property})
+        return render(request, 'delete_property.html', {'property': property})
 
 def message_owner(request, propertyId):
     property = get_object_or_404(Property, pk=propertyId)
