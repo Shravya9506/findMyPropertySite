@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+{% extends 'base.html' %}
+{%load static %}
+{% block title %}View messages received{% endblock title %}
+
+{% block content %}
+<div>
+  {% for propertyMessage in propertyMessages%}
+    <div class="card mb-5">
+      <div class="card-header">{{propertyMessage.property}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{propertyMessage.message}}</h5>
+        <p class="card-text">You can reply to the sender of message @ {{propertyMessage.email}} or call {{propertyMessage.phone}}</p>
+        <a href="{% url 'properties:delete_property' pk=propertyMessage.id %}" class="btn btn-primary">Delete</a>
+      </div>
+    </div>
+  {% endfor%}
+</div>
+{% endblock content %}
+</html>

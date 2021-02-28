@@ -1,0 +1,18 @@
+.vacation-details-container{
+  background-color: #667292;
+  color: white;
+}
+
+.h-divider{
+  margin-top:5px;
+ margin-bottom:5px;
+ height:1px;
+ width:100%;
+ border-top:1px solid white;
+}
+
+.vacation-days{
+    width:70px;
+  background-color: #23424A;
+      z-index: 9;
+}

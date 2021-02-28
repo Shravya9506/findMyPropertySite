@@ -16,19 +16,17 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class=" text-white navbar-brand mr-5 ml-5">Home</a>
+    <a class=" text-white navbar-brand mr-5 ml-5" href="{% url 'findMyProperty:home'%}">Home</a>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav w-100 justify-content-end pr-5">
             {% if user.is_seller %}
-                <li class="nav-item"><a class="text-white text-decoration-none nav-link">Sell a property</a></li>
-                <li class="nav-item"><a class="text-white text-decoration-none nav-link">View your properties</a></li>
-                <li class="nav-item"><a class="text-white text-decoration-none nav-link">View messages</a></li>
+                <li class="nav-item"><a class="text-white text-decoration-none nav-link" href="{% url 'properties:add_property' pk=user.id %}">Sell a property</a></li>
+                <li class="nav-item"><a class="text-white text-decoration-none nav-link" href="{% url 'properties:view_your_properties' pk=user.id %}">View your properties</a></li>
+                <li class="nav-item"><a class="text-white text-decoration-none nav-link" href="{% url 'properties:view_messages_received' pk=user.id %}">View messages received</a></li>
             {% elif user.is_buyer%}
-                <li class="nav-item"><a class="text-white text-decoration-none nav-link">Lookup a property</a></li>
-                <li class="nav-item"><a class="text-white text-decoration-none nav-link">Your favorite properties</a></li>
+                <li class="nav-item"><a class="text-white text-decoration-none nav-link" href="{% url 'properties:view_your_favorites' pk=user.id %}">Your favorite properties</a></li>
             {% endif %}
-            <li class="nav-item"><a class="text-white text-decoration-none nav-link">About us</a></li>
-            <li class="nav-item"><a class="text-white text-decoration-none nav-link">Contact us</a></li>
+            <li class="nav-item"><a class="text-white text-decoration-none nav-link" href="{% url 'findMyProperty:about_us'%}">About us</a></li>
                 {% if user.is_authenticated %}
                     <li class="dropdown pt-2">
                         <a href="#" class="dropdown-toggle text-white d-flex flex-row" data-toggle="dropdown" role="button" aria-expanded="false">

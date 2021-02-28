@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Email sent</h1>
+    <p>Email has been successfully sent!!!</p>
+    <a href="{% url 'findMyProperty:home'%}" type="button" class="btn btn-primary">Back to properties list</a>
+{% endblock content %}

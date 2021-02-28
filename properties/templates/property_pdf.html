@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+<div  class="vacation-details-container">
+    <div class="p-5">
+            <h3> {{ property.name }} </h3>
+            <h6> @ {{property.address}}, {{property.city}}, {{property.state}}, {{property.zipcode}}</h6>
+            <div class="h-divider"></div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>PROPERTY DESCRIPTION:</h5>
+                    <p>{{ property.description }}</p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>OWNER DETAILS:</h5>
+                    Name : {{property.seller.user.first_name}} {{property.seller.user.last_name}} <br/>
+                    Phone : {{property.seller.user.phone}}<br/>
+                    Email : {{property.seller.user.email}}
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-sm-7">
+                    <h5>PROPERTY SALE TYPE:</h5>
+                        {% if property.sale_type == 'RE' %}
+                        Resale - Meaning this property is not a newly constructed one instead it is a resale of used property.
+                        {% elif property.sale_type == 'NE' %}
+                        New property - Meaning this property is a newly constructed one.
+                        {% else %}
+                            Please contact the owner to know whether the property is for resale or it is a new property.
+                        {% endif %}
+                </div>
+            </div>
+                <div class="row mt-5">
+                <div class="col-sm-4">
+                   <h5>PURCHASE TYPE:</h5>
+                    {% if property.purchase_type == 'LE' %}
+                        Lease - Meaning this property is available for lease only. You may contact the owner to understand the terms of leasing this property.
+                    {% elif property.purchase_type == 'OW' %}
+                        Own - Meaning you can only own this property.
+                    {% elif property.purchase_type == 'RE' %}
+                        Rent - Meaning you can only rent this property. You may contact the owner to understand the terms of renting this property.
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

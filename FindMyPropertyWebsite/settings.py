@@ -76,22 +76,22 @@ WSGI_APPLICATION = 'FindMyPropertyWebsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'efs',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'PORT': '5433'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'efs',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'PORT': '5433'
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -134,7 +134,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'properties/static/')
 
 
 AUTH_USER_MODEL = 'users.User'
@@ -143,11 +143,11 @@ AUTH_USER_MODEL = 'users.User'
 # replace 'password' with the password for your gmail account for django apps
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'acmeCMS8210@gmail.com'
-EMAIL_HOST_PASSWORD = 'testing@123'
+EMAIL_HOST_PASSWORD = 'Acme@8210'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL='/'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

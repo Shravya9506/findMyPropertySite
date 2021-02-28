@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Message sent{% endblock title %}
+{% block content %}
+    <h1>Message sent!!!!</h1>
+    <a type="button" class="btn btn-primary" href="{% url 'findMyProperty:home' %}">Back to properties list</a>
+{% endblock %}
+</html>

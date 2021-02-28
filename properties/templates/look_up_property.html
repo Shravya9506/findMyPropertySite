@@ -8,19 +8,17 @@
 <div>
   {% for property in properties%}
     <div class="card mb-5">
-      {% if user.is_authenticated and user.is_buyer %}
-      <div class="card-header">{{property.name}}<a href="{% url 'properties:mark_as_favorite' pk=property.id %}" class="favorite-icon float-right"><i class="far fa-heart fa-2x"></i></a></div>
+      {% if property.id in favorites %}
+      <div class="card-header">{{property.name}}<a href="{% url 'properties:unmark_as_favorite' pk=property.id %}" class="favorite-icon float-right"><i class="fas fa-heart fa-2x"></i></a></div>
       {% else %}
-      <div class="card-header">{{property.name}}</div>
+      <div class="card-header">{{property.name}}<a href="{% url 'properties:mark_as_favorite' pk=property.id %}" class="favorite-icon float-right"><i class="far fa-heart fa-2x"></i></a></div>
       {% endif %}
       <div class="card-body">
         <h5 class="card-title">{{property.address}}, {{property.city}}, {{property.state}}, {{property.zipcode}}</h5>
         <p class="card-text">{{property.description}}</p>
         <p class="card-text">{{property.seller.user.first_name}} {{property.seller.user.last_name}}</p>
         <a href="{% url 'properties:message_owner' propertyId=property.id %}" class="btn btn-primary">Contact owner</a>
-        {% if user.is_authenticated and user.is_buyer %}
-        <a href="{% url 'properties:property_pdf_email' pk=property.id %}" class="btn btn-primary">Email me more</a>
-        {% endif %}
+        <a class="btn btn-primary">Email me more</a>
       </div>
     </div>
   {% endfor%}
