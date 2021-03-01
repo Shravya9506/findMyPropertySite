@@ -18,7 +18,7 @@
         <p class="card-text">{{property.description}}</p>
         <p class="card-text">Owner : {{property.seller.user.first_name}} {{property.seller.user.last_name}}</p>
         <a href="{% url 'properties:message_owner' propertyId=property.id %}" class="btn btn-primary">Contact owner</a>
-        <a class="btn btn-primary">Email me more</a>
+        <a href="{% url 'properties:property_pdf_email' pk=property.id %}" class="btn btn-primary">Email me more</a>
       </div>
     </div>
   {% endfor%}
