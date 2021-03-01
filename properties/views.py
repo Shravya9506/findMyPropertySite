@@ -141,5 +141,5 @@ def delete_message(request, pk):
     message = get_object_or_404(PropertyMessage, pk = pk)
     if request.method == "POST":
         message.delete()
-        return redirect('findMyProperty:home')
+        return redirect('properties:view_messages_received', request.user.id)
     return render(request, 'delete_message.html', {'message': message})
