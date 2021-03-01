@@ -30,7 +30,7 @@ def edit_profile(request):
         if form.is_valid():
             customer = form.save(commit=False)
             customer.save()
-            return redirect('shop:product_list')
+            return redirect('findMyProperty:home')
     else:
         # edit
         form = CustomerForm(instance=customer)
