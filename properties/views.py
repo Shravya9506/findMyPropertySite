@@ -54,7 +54,7 @@ def delete_property(request, pk):
     property = get_object_or_404(Property, pk=pk)
     if request.method == "POST":
         property.delete()
-        return redirect('properties:view_your_properties', pk)
+        return redirect('findMyProperty:home')
     return render(request, 'delete_property.html', {'property': property})
 
 def message_owner(request, propertyId):
