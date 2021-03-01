@@ -45,9 +45,9 @@ def edit_property(request, pk):
             property = form.save(commit=False)
             property.save()
             return redirect('findMyProperty:home')
-        else:
-            form = PropertyForm(instance=property)
-    return render(request, 'edit_property.html', {'form': form})
+    else:
+        form = PropertyForm(instance=property)
+        return render(request, 'edit_property.html', {'form': form})
 
 @login_required
 def delete_property(request, pk):
@@ -55,8 +55,7 @@ def delete_property(request, pk):
     if request.method == "POST":
         property.delete()
         return redirect('properties:view_your_properties', pk)
-    else:
-        return render(request, 'delete_property.html', {'property': property})
+    return render(request, 'delete_property.html', {'property': property})
 
 def message_owner(request, propertyId):
     property = get_object_or_404(Property, pk=propertyId)
