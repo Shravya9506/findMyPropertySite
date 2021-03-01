@@ -44,10 +44,10 @@ def edit_property(request, pk):
         if form.is_valid():
             property = form.save(commit=False)
             property.save()
-            return redirect('properties:view_your_properties')
+            return redirect('findMyProperty:home')
         else:
             form = PropertyForm(instance=property)
-            return render(request, 'edit_property.html', {'form': form})
+    return render(request, 'edit_property.html', {'form': form})
 
 @login_required
 def delete_property(request, pk):
