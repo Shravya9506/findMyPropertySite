@@ -18,4 +18,5 @@ urlpatterns = [
     path('view_your_favorites/<int:pk>', views.view_your_favorites, name='view_your_favorites'),
     path('look_up_property/<int:pk>', views.look_up_property, name='look_up_property'),
     path('property_pdf_email/<int:pk>', views.property_pdf_email, name='property_pdf_email'),
+    path('delete_message/<int:pk>', views.delete_message, name='delete_message')
 ]

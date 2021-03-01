@@ -134,3 +134,12 @@ def property_pdf_email(request, pk):
     #send e-mail
     email.send()
     return render(request, 'pdf_sent.html')
+
+
+@login_required
+def delete_message(request, pk):
+    message = get_object_or_404(PropertyMessage, pk = pk)
+    if request.method == "POST":
+        message.delete()
+        return redirect('findMyProperty:home')
+    return render(request, 'delete_message.html', {'message': message})
